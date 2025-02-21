@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-challenge-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-challenge
+  template:
+    metadata:
+      labels:
+        app: kubernetes-challenge
+    spec:
+      containers:
+        - name: kubernetes-challenge
+          image: kubernetes-challenge:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 4000
+          env:
+            - name: NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: kubernetes-challenge-config
+                  key: name
+

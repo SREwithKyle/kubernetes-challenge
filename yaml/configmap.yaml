@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernetes-challenge-config
+data:
+  name: "Kyle"
+
